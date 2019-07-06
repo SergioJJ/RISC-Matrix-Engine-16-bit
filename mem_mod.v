@@ -7,6 +7,7 @@
 // ReadWrite 1 = Read; at risingedge
 // ReadWrite 0 = Write at falling edge
 // nEnable is active low
+// http://www.asic-world.com/examples/verilog/ram_sp_sr_sw.html
 
 
 

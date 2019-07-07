@@ -10,6 +10,8 @@
 // nEnable is active low, this allows data to be either written 
 // or read from at the respective clock edge dependent on the ReadWrite signal
 //
+// Reset is asynchronous and resets entire memory block to all 0's
+//
 // Page used below for reference
 // http://www.asic-world.com/examples/verilog/ram_sp_sr_sw.html
 `timescale 1ns/1ns
@@ -18,7 +20,7 @@ module memory (dataBus, address, nEnable, ReadWrite, clk, Reset);
 	
 // Input Ports for memory control and clk
 input	ReadWrite, nEnable, clk, Reset;
-input	[3:0] address;
+input	[7:0] address;
 	
 // I/O tristated bus for all communication to other modules
 inout 	[255:0] dataBus; 

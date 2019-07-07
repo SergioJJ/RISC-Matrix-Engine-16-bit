@@ -12,7 +12,7 @@
 //
 // Page used below for reference
 // http://www.asic-world.com/examples/verilog/ram_sp_sr_sw.html
-
+`timescale 1ns/1ns
 module memory (dataBus, address, nEnable, ReadWrite, clk);
 
 	

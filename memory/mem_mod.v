@@ -13,11 +13,11 @@
 // Page used below for reference
 // http://www.asic-world.com/examples/verilog/ram_sp_sr_sw.html
 `timescale 1ns/1ns
-module memory (dataBus, address, nEnable, ReadWrite, clk);
+module memory (dataBus, address, nEnable, ReadWrite, clk, Reset);
 
 	
 // Input Ports for memory control and clk
-input	ReadWrite, nEnable, clk;
+input	ReadWrite, nEnable, clk, Reset;
 input	[3:0] address;
 	
 // I/O tristated bus for all communication to other modules
@@ -29,6 +29,21 @@ reg [255:0] MemArray[0:7];
 // Internal registers directing read data
 reg  [255:0] outArray;
 
+// Reset control logic, sets all data registers to zero when Reset goes high
+always @ (Reset)
+begin
+	if (Reset)
+	begin 
+		MemArray [0] = 	256'b0;
+		MemArray [1] = 	256'b0;
+		MemArray [2] = 	256'b0;
+		MemArray [3] = 	256'b0;
+		MemArray [4] = 	256'b0;
+		MemArray [5] = 	256'b0;
+		MemArray [6] = 	256'b0;
+		MemArray [7] = 	256'b0;
+	end
+end	
     
 // Tristate buffer control
 // Memory only writes to bus if nEnable is low and ReadWrite is high, prompting a read

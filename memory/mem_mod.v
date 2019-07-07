@@ -49,7 +49,7 @@ end
 // Memory only writes to bus if nEnable is low and ReadWrite is high, prompting a read
 // When nEnable is low, connect dataBus to internal register outArray which has the 
 // data from the requested address, otherwise tristate
-assign dataBus = (!nEnable && !ReadWrite) ? outArray : 256'bz;
+assign dataBus = (!nEnable && ReadWrite) ? outArray : 256'bz;
 	
 
 

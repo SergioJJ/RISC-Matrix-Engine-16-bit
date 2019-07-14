@@ -35,13 +35,24 @@ op_code     = inst_mem [8:6];
 destination = inst_mem [5:3];
 source      = inst_mem [2:0];
 
+parameter NO_OP     = 000;
+parameter LOAD      = 001;
+parameter ADD       = 010;
+parameter SUB       = 011;
+parameter SCAL_MUL  = 100;
+parameter MATR_MUL  = 101;
+parameter TRANSPOSE = 110;
+parameter STOP      = 111;
+	
+	
+	
 always @ (posedge reset)
 	program_address = 6'b 0;
 	
 	
 always @ (posedge clk)
 	begin
-		case (op_code)
+	case (op_code)
 	
 	
 	end

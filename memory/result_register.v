@@ -54,5 +54,4 @@ always @ (negedge clk)
 	if (!ReadWrite && !nEnable && reg_select)
 		Result_array = dataBus;
 
-
 endmodule

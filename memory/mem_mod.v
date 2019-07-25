@@ -1,5 +1,8 @@
 // Sergio Jimmenez
-// 6 address 256 bit memory
+// 7 address 256 bit memory
+//******
+//needs to be changed from 6 available registers to 7
+//******
 // This module will utilize a single 256 bit I/O Bus which will be tristated when not in use.
 // Addresses 0 - 5 will be used for system memory directly in the RAM, addresses 
 // 6 and 7 will be reserved for other actions.

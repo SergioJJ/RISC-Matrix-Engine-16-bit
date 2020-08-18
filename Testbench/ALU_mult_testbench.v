@@ -11,6 +11,12 @@
 // MATR OUT   ADDRESS 2  *multiplication doesn't have additional info, output of mult will go to dataBus due to OUT modifier
 // 101  111   010        *ideally, will have RAM writing this info
 // 
+// LOAD C_register to REG_A
+// 001  010   XXX
+// 
+// MATR OUT   ADDRESS 3
+// 101  111   011
+// 
 // Matrix 1
 // 5	8	6	2
 // 7	3	8	4
@@ -68,16 +74,31 @@ begin
 	dataIN = 256'h 000b_000e_0013_0012_0006_0009_0004_0005_000c_000a_000f_000e_0006_0003_0008_0007;
 	
 	#10
-	op_code     = 3'b 000;
+	op_code     = 3'b 000; // test NO_OP
 	dataIN = 256'h z;
 	
 	#10
 
-	op_code     = 3'b 101;
-	ALU_control = 3'b 111;
+	op_code     = 3'b 101; // mult
+	ALU_control = 3'b 000; // put out on register
 	
+	#10
 	
+	op_code     = 3'b 001; // load C_register
+	ALU_control = 3'b 010; // to A register
+	dataIN = 256'b 0001_0001_0001_0001_0001_0001_0001_0001_0001_0001_0001_0001_0001_0001_0001_0001;
 	
+	#10
+	
+	op_code     = 3'b 001; // load
+	ALU_control = 3'b 100; // bus to Register B
+	
+	#10
+	op_code     = 3'b 010; // add
+	ALU_control = 3'b 111; // output to bus
+	dataIN = 256'h z;
+	
+
 	
 end
 
